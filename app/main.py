@@ -35,11 +35,6 @@ except redis.ConnectionError as e:
     logger.error(f"Failed to connect to Redis: {e}")
     raise
 
-# 代理设置
-REQUEST_KWARGS = {
-    'proxy_url': 'http://127.0.0.1:7890',
-}
-
 class TokenStats:
     def __init__(self):
         self.redis = REDIS_CLIENT
@@ -181,7 +176,6 @@ def main():
     try:
         updater = Updater(
             token=TOKEN,
-            request_kwargs=REQUEST_KWARGS,
             use_context=True
         )
         
